@@ -24,7 +24,7 @@ jobs:
 
       - name: Run preprocessing
         run: |
-          python automate_Nabila-Febriyanti-Valentin.py
+          python main.py
 
       - name: Upload processed dataset
         uses: actions/upload-artifact@v3

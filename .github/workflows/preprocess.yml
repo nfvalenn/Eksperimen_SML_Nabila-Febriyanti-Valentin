@@ -24,7 +24,7 @@ jobs:
 
       - name: Run preprocessing
         run: |
-          python -c "from automate_Nabila-Febriyanti-Valentin import preprocess_data; preprocess_data('healthcare-dataset-stroke-data.csv')"
+          python automate_Nabila-Febriyanti-Valentin.py
 
       - name: Upload processed dataset
         uses: actions/upload-artifact@v3

@@ -1,0 +1,37 @@
+name: Preprocess Dataset
+
+on:
+  push:
+    paths:
+      - 'automate_*.py'
+      - '*.csv'
+
+jobs:
+  run-preprocessing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas scikit-learn
+
+      - name: Run preprocessing
+        run: |
+          python -c "from automate_Nabila-Febriyanti-Valentin import preprocess_data; preprocess_data('healthcare-dataset-stroke-data.csv')"
+
+      - name: Upload processed dataset
+        uses: actions/upload-artifact@v3
+        with:
+          name: processed-data
+          path: |
+            X_train.csv
+            X_test.csv
+            y_train.csv
+            y_test.csv
